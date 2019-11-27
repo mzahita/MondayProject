@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.function.IntFunction;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -15,8 +12,7 @@ public class ProjectOne {
     public char[] getChars(String number) {
         char[] eachWord = {};
         // write your code here
-
-
+        eachWord = number.toCharArray();
         // end of code
         return eachWord;
     }
@@ -28,8 +24,7 @@ public class ProjectOne {
     public String[] getWords(String sentence) {
         String[] eachWord = {};
         // write your code here
-
-
+        eachWord = sentence.split(" ");
         // end of code
         return eachWord;
     }
@@ -43,8 +38,13 @@ public class ProjectOne {
     public int total(ArrayList<Integer> myList) {
         int total = Integer.MIN_VALUE;
         // write your code here
+        total = 0;
+        for (Integer num : myList) {
+            total += num;
+        }
 
-
+        //2.way
+        //total = myList.stream().mapToInt(x->x).sum();
         // end of code
         return total;
     }
@@ -59,7 +59,14 @@ public class ProjectOne {
     public int evenTotal(ArrayList<Integer> myList) {
         int total = 0;
         // write your code here
+        for (Integer num : myList) {
+            if (num % 2 == 0) {
+                total += num;
+            }
+        }
 
+        // 2. way
+        // total = myList.stream().filter(x -> x % 2 == 0).mapToInt(x->x).sum();
 
         // end of code
         return total;
@@ -75,7 +82,14 @@ public class ProjectOne {
     public int oddTotal(ArrayList<Integer> myList) {
         int total = 0;
         // write your code here
+        for (Integer num : myList) {
+            if (num % 2 != 0) {
+                total += num;
+            }
+        }
 
+        // 2. way
+        // total = myList.stream().filter(x -> x % 2 != 0).mapToInt(x->x).sum();
 
         // end of code
         return total;
@@ -87,8 +101,7 @@ public class ProjectOne {
     public String getUpperCase(String name) {
         String upperCaseName = null;
         // write your code here
-
-
+        upperCaseName = name.toUpperCase();
         // end of code
         return upperCaseName;
     }
@@ -99,8 +112,7 @@ public class ProjectOne {
     public String getLowerCase(String name) {
         String lowerCaseName = null;
         // write your code here
-
-
+        lowerCaseName = name.toLowerCase();
         // end of code
         return lowerCaseName;
     }
@@ -112,8 +124,10 @@ public class ProjectOne {
     public String convertToString(int number) {
         String result = "";
         // write your code here
+        result += number;
 
-
+        //2.way
+        // result = String.valueOf(number);
         // end of code
         return result;
     }
@@ -125,8 +139,7 @@ public class ProjectOne {
     public String getFirst3Letters(String word) {
         String result = null;
         // write your code here
-
-
+        result = word.substring(0, 3);
         // end of code
         return result;
     }
@@ -138,8 +151,7 @@ public class ProjectOne {
     public String getLast2Letters(String word) {
         String result = "";
         // write your code here
-
-
+        result.substring(word.length() - 2);
         // end of code
         return result;
     }
@@ -151,8 +163,7 @@ public class ProjectOne {
     public boolean compareIntAndString(int a, String b) {
         boolean result = false;
         // write your code here
-
-
+        result = a == Integer.valueOf(b);
         // end of code
         return result;
     }
@@ -163,8 +174,7 @@ public class ProjectOne {
     public String removeWhiteSpacesAround(String str) {
         String result = null;
         // write your code here
-
-
+        result = str.trim();
         // end of code
         return result;
     }
@@ -176,7 +186,12 @@ public class ProjectOne {
     public List<Integer> multipliedBy2(List<Integer> numbers) {
         List<Integer> result = new ArrayList<>();
         // write your code here
+        for (Integer number : numbers) {
+            result.add(number*2);
+        }
 
+        //2.way
+        //result = numbers.stream().map(x->x*2).collect(Collectors.toList());
 
         // end of code
         return result;
@@ -189,7 +204,12 @@ public class ProjectOne {
     public List<String> doubledWord(List<String> words) {
         List<String> result = new ArrayList<>();
         // write your code here
+        for (String word : words) {
+            result.add(word+word);
+        }
 
+        //2.way
+        //result = words.stream().map(x->x+x).collect(Collectors.toList());
 
         // end of code
         return result;
@@ -201,7 +221,18 @@ public class ProjectOne {
     public boolean hasDuplicates(Character[] characters) {
         boolean result = false;
         // write your code here
+        int lengthAll = characters.length;
+        int lengthSet = new HashSet<>(Arrays.asList(characters)).size();
+        result = lengthAll != lengthSet;
 
+        //2.way
+//        Set<Character> set = new HashSet<>();
+//        for (Character character : characters) {
+//            if(!set.add(character)){
+//                return false;
+//            }
+//        }
+//        return true;
 
         // end of code
         return result;
