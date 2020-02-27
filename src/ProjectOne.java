@@ -3,6 +3,8 @@ import java.util.function.IntFunction;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+//Firts Monday Project 
+
 public class ProjectOne {
 
     /**
